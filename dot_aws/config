@@ -1,0 +1,13 @@
+[profile atlas-ops-admin]
+sso_start_url = https://kgi.awsapps.com/start
+sso_region = us-east-1
+sso_account_id = 481078097852
+sso_role_name = AdministratorAccess
+region = us-east-2
+
+[profile atlas-ops-user]
+sso_start_url = https://kgi.awsapps.com/start
+sso_region = us-east-1
+sso_account_id = 481078097852
+sso_role_name = AtlasOpsUsers
+region = us-east-2

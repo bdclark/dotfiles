@@ -1,0 +1,7 @@
+[user]
+  name = Brian Clark
+  email = brian@clark.zone
+[includeIf "gitdir:~/dev/kgi/"]
+  path = .gitconfig-kgi
+[includeIf "gitdir:~/dev/personal/"]
+  path = .gitconfig-personal
