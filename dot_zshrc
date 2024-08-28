@@ -85,6 +85,8 @@ plugins=(
   kubectx
   nvm
   #pyenv
+  terraform
+  wd
 )
 
 # Lazy load NVM

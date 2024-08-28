@@ -11,3 +11,7 @@ sso_region = us-east-1
 sso_account_id = 481078097852
 sso_role_name = AtlasOpsUsers
 region = us-east-2
+
+[profile bclark-admin]
+credential_process = sh -c "op item get --vault 'Private' 'BClark AWS Access Key' --format json --fields 'label=access key id,label=secret access key' | jq '{Version: 1, AccessKeyId: .[0].value, SecretAccessKey: .[1].value}'"
+region = us-east-1

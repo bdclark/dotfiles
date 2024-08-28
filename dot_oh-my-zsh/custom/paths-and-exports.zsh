@@ -2,6 +2,8 @@
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 # Add Homebrew openssh to PATH
 export PATH=$(brew --prefix openssh)/bin:$PATH
+# Add personal bin directory to path
+export PATH="$HOME/bin:$PATH"
 
 # Add pyenv to path and init
 export PYENV_ROOT="$HOME/.pyenv"
