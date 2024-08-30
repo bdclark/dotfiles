@@ -1,0 +1,62 @@
+#!/bin/bash -eu
+# This script assume your AWS_PROFILE is properly set
+# and if necessary you are already logged-in via SSO, etc.
+#
+# Usage: start-stop-ec2 INSTANCE_NAME start|stop|status
+
+fail() {
+  if [ ! "$1" = "" ]; then >&2 echo "ERROR: $1"; fi
+  exit 1
+}
+
+usage() {
+ >&2 echo "Usage: $(basename "$0") INSTANCE_NAME start|stop|status"
+}
+
+while getopts "h" flag; do
+case "$flag" in
+    h)
+      usage
+      exit 0
+      ;;
+    *)
+      usage
+      exit 1
+      ;;
+esac
+done
+shift $((OPTIND - 1))
+
+if [ "$#" -ne "2" ]; then
+  usage
+  fail "two arguments required"
+fi
+
+instance_name="$1"
+action="$2"
+
+instance_id="$(aws ec2 describe-instances \
+  --filters "Name=tag:Name,Values=${instance_name}" \
+  --query 'Reservations[*].Instances[*].[InstanceId]' \
+  --output text)"
+
+if [ -z "$instance_id" ]; then
+  fail "instance with Name tag '$instance_name not found"
+fi
+
+case "$action" in
+  start)
+    aws --no-cli-pager ec2 start-instances --instance-ids "$instance_id" --output text
+    ;;
+  stop)
+    aws --no-cli-pager ec2 stop-instances --instance-ids "$instance_id" --output text
+    ;;
+  status)
+    aws --no-cli-pager ec2 describe-instances --instance-ids "$instance_id" \
+      --query 'Reservations[*].Instances[*].[State.Name]' --output text
+    ;;
+  *)
+    usage
+    fail "action must be start, stop or status"
+    ;;
+esac
