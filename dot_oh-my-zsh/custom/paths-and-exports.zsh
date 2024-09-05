@@ -1,5 +1,6 @@
 # Add Homebrew coreutils to PATH
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
 # Add Homebrew openssh to PATH
 export PATH=$(brew --prefix openssh)/bin:$PATH
 # Add personal bin directory to path
