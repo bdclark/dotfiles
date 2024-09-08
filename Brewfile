@@ -9,6 +9,7 @@ brew "jq"
 brew "kubernetes-cli"
 brew "kubectx"
 brew "libmagic"
+brew "mas"
 brew "openssh"
 brew "powerlevel10k"
 brew "pyenv"
@@ -22,3 +23,5 @@ cask "font-meslo-for-powerline"
 cask "iterm2"
 cask "spotify"
 cask "visual-studio-code"
+mas "HP Smart", id: 1474276998
+mas "Microsoft Remote Desktop", id: 1295203466
