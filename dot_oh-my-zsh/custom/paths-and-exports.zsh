@@ -18,3 +18,4 @@ export NVM_DIR="$HOME/.nvm"
 
 # Set default AWS profile
 export AWS_PROFILE=atlas-ops-admin
+export GROOVY_HOME=/opt/homebrew/opt/groovy/libexec
