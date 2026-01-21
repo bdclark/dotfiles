@@ -4,7 +4,10 @@ export PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
 # Add Homebrew openssh to PATH
 export PATH=$(brew --prefix openssh)/bin:$PATH
 # Add personal bin directory to path
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+# Add krew plugin manager for kubectl to path
+export KREW_ROOT="${KREW_ROOT:-$HOME/.krew}"
+[[ -d "$KREW_ROOT" ]] && export PATH="${KREW_ROOT}/bin:$PATH"
 
 # Add pyenv to path and init
 export PYENV_ROOT="$HOME/.pyenv"
@@ -19,3 +22,8 @@ export NVM_DIR="$HOME/.nvm"
 # Set default AWS profile
 export AWS_PROFILE=atlas-ops-admin
 export GROOVY_HOME=/opt/homebrew/opt/groovy/libexec
+
+# Atlas Catalog
+export ATLAS_CATALOG_S3_BUCKET="kgi-atlas-artifacts"
+export ATLAS_CATALOG_S3_PREFIX="catalog"
+export ATLAS_CATALOG_S3_REGION="us-east-2"
